@@ -1,0 +1,28 @@
+﻿@model IEnumerable<Web_project_as.Models.Product>
+@{
+    ViewData["Title"] = "Show All Products";
+}
+<div class="container mt-4">
+    <h2>Products List</h2>
+    <table class="table table-bordered table-striped mt-3">
+        <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Product Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.ProductID</td>
+                    <td>@item.ProductName</td>
+                    <td>$@item.Price</td>
+                    <td>@item.Quantity</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

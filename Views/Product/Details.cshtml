@@ -1,0 +1,21 @@
+﻿@model Web_project_as.Models.Product
+
+@{
+    ViewData["Title"] = "Product Details";
+}
+
+<div class="container mt-4">
+    <h2>Product Details</h2>
+    <hr />
+
+    <div class="card p-4 shadow-sm" style="max-width: 500px;">
+        <p><strong>Product ID:</strong> @Model.ProductID</p>
+        <p><strong>Product Name:</strong> @Model.ProductName</p>
+        <p><strong>Price:</strong> <span class="text-success">$@Model.Price</span></p>
+        <p><strong>Available Quantity:</strong> @Model.Quantity</p>
+
+        <div class="mt-3">
+            <a asp-action="ShowAllProudect" class="btn btn-secondary">Back to List</a>
+        </div>
+    </div>
+</div>
