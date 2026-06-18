@@ -16,14 +16,22 @@ namespace Web_project_as.Data
         {
             base.OnModelCreating(modelBuilder);
 
-            // 1. بذر بيانات المستخدمين (مكتوبة بشكل صحيح تماماً)
+            modelBuilder.Entity<Order>()
+                .HasOne(o => o.User)
+                .WithMany(u => u.Orders)
+                .HasForeignKey(o => o.UserID);
+
+            modelBuilder.Entity<Order>()
+                .HasOne(o => o.Product)
+                .WithMany(p => p.Orders)
+                .HasForeignKey(o => o.ProductID);
+
             modelBuilder.Entity<User>().HasData(
                 new User { UserID = 1, FullName = "Lina", Email = "lina@gmail.com", Password = "123" },
                 new User { UserID = 2, FullName = "Sondos Alqirim", Email = "sondos@gmail.com", Password = "456" },
                 new User { UserID = 3, FullName = "Aya Alkirim", Email = "aya@gmail.com", Password = "123" }
             );
 
-            // 2. بذر بيانات المنتجات (تم إضافة الـ ProductID يدوياً هنا لسلامة الهجرة)
             modelBuilder.Entity<Product>().HasData(
                 new Product { ProductID = 1, ProductName = "Diamond Engagement Ring", Price = 1200, Quantity = 15 },
                 new Product { ProductID = 2, ProductName = "Gold Chain Necklace", Price = 450, Quantity = 10 },
@@ -31,11 +39,10 @@ namespace Web_project_as.Data
                 new Product { ProductID = 4, ProductName = "Classic Wedding Band", Price = 600, Quantity = 50 }
             );
 
-            // 3. bذر بيانات الطلبات (تم إضافة الـ OrderId يدوياً، مع الحفاظ على ترابط الـ UserID والـ ProductID)
             modelBuilder.Entity<Order>().HasData(
-                new Order { OrderID = 1, UserID = 1, ProductID = 1, Quantity = 3 },
-                new Order { OrderID = 2, UserID = 2, ProductID = 1, Quantity = 2 },
-                new Order { OrderID = 3, UserID = 3, ProductID = 2, Quantity = 5 }
+                new Order { OrderID = 1, UserID = 1, ProductID = 1, Quantity = 3, TotalPrice = 3600 },
+                new Order { OrderID = 2, UserID = 2, ProductID = 1, Quantity = 2, TotalPrice = 2400 },
+                new Order { OrderID = 3, UserID = 3, ProductID = 2, Quantity = 5, TotalPrice = 2250 }
             );
         }
     }

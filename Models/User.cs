@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Web_project_as.Models
 {
@@ -15,5 +16,8 @@ namespace Web_project_as.Models
 
         [Required]
         public string Password { get; set; } = null!;
+
+        [InverseProperty("User")]
+        public ICollection<Order>? Orders { get; set; }
     }
 }

@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Web_project_as.Data;
 
@@ -10,9 +11,10 @@ using Web_project_as.Data;
 namespace Web_project_as.Migrations
 {
     [DbContext(typeof(JewelryContext))]
-    partial class JewelryContextModelSnapshot : ModelSnapshot
+    [Migration("20260611202542_InitialCreate")]
+    partial class InitialCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -55,7 +57,7 @@ namespace Web_project_as.Migrations
                             OrderID = 1,
                             ProductID = 1,
                             Quantity = 3,
-                            TotalPrice = 3600m,
+                            TotalPrice = 0m,
                             UserID = 1
                         },
                         new
@@ -63,7 +65,7 @@ namespace Web_project_as.Migrations
                             OrderID = 2,
                             ProductID = 1,
                             Quantity = 2,
-                            TotalPrice = 2400m,
+                            TotalPrice = 0m,
                             UserID = 2
                         },
                         new
@@ -71,7 +73,7 @@ namespace Web_project_as.Migrations
                             OrderID = 3,
                             ProductID = 2,
                             Quantity = 5,
-                            TotalPrice = 2250m,
+                            TotalPrice = 0m,
                             UserID = 3
                         });
                 });
@@ -189,7 +191,7 @@ namespace Web_project_as.Migrations
                         .IsRequired();
 
                     b.HasOne("Web_project_as.Models.User", "User")
-                        .WithMany("Orders")
+                        .WithMany()
                         .HasForeignKey("UserID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -200,11 +202,6 @@ namespace Web_project_as.Migrations
                 });
 
             modelBuilder.Entity("Web_project_as.Models.Product", b =>
-                {
-                    b.Navigation("Orders");
-                });
-
-            modelBuilder.Entity("Web_project_as.Models.User", b =>
                 {
                     b.Navigation("Orders");
                 });

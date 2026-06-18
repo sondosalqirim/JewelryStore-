@@ -1,0 +1,27 @@
+# .NET
+bin/
+obj/
+*.user
+*.suo
+*.userprefs
+*.sln.docstate
+.vs/
+
+# NuGet
+packages/
+*.nupkg
+
+# Visual Studio
+*.VisualState.xml
+
+# JetBrains Rider
+.idea/
+*.sln.iml
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Logs
+applog*.txt
+apperr*.txt

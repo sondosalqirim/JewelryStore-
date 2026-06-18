@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Web_project_as.Data;
 
@@ -10,9 +11,10 @@ using Web_project_as.Data;
 namespace Web_project_as.Migrations
 {
     [DbContext(typeof(JewelryContext))]
-    partial class JewelryContextModelSnapshot : ModelSnapshot
+    [Migration("20260612164648_SeedOrderTotalPrices")]
+    partial class SeedOrderTotalPrices
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

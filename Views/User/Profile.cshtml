@@ -1,0 +1,28 @@
+@model Web_project_as.Models.User
+@{
+    ViewData["Title"] = "Profile";
+}
+<h2>My Profile</h2>
+<p><strong>Name:</strong> @Model.FullName</p>
+<p><strong>Email:</strong> @Model.Email</p>
+
+<hr />
+
+<h3>Change Password</h3>
+@if (ViewBag.Error != null)
+{
+    <p class="error">@ViewBag.Error</p>
+}
+@if (ViewBag.Message != null)
+{
+    <p class="success">@ViewBag.Message</p>
+}
+<form method="post">
+    <label>Old Password</label>
+    <input name="oldPassword" type="password" required />
+    <label>New Password</label>
+    <input name="newPassword" type="password" required />
+    <button type="submit">Change Password</button>
+</form>
+
+<a asp-action="LogOut" class="btn" style="margin-top:15px;">Log Out</a>

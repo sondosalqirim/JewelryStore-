@@ -1,0 +1,42 @@
+@model List<Web_project_as.Models.Product>
+@{
+    ViewData["Title"] = "Search";
+}
+<h2>Search Products</h2>
+<form>
+    <label>Product Name</label>
+    <input name="searchString" placeholder="Enter product name" />
+    <button type="submit">Search</button>
+</form>
+
+@if (Model.Any())
+{
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th></th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.ProductID</td>
+                <td>@item.ProductName</td>
+                <td>$@item.Price</td>
+                <td>@item.Quantity</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.ProductID" class="btn">Details</a>
+                    <form method="post" asp-action="Delete" asp-route-id="@item.ProductID" style="display:inline;">
+                        <button type="submit" onclick="return confirm('Delete @item.ProductName?')">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </table>
+}
+else
+{
+    <p>No products found.</p>
+}
